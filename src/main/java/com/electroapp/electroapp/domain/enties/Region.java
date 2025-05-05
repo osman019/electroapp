@@ -20,10 +20,11 @@ import jakarta.persistence.Table;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
-@Table(name = "regions")
 @Entity
 @EqualsAndHashCode(exclude =  {"cities"})
 @ToString(exclude =  {"cities"})
+
+@Table(name = "regions")
 public class Region {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,11 +37,11 @@ public class Region {
 
 
     @ManyToOne
-    @JoinColumn(name = "country")
+    @JoinColumn(name = "country_id")
     @JsonBackReference
     Country countryId;
 
-    @OneToMany(mappedBy =   "region", fetch =   FetchType.LAZY, cascade =  CascadeType.ALL)
+    @OneToMany(mappedBy =   "regionId", fetch =   FetchType.LAZY, cascade =  CascadeType.ALL)
     @JsonBackReference
     private Set<City> cities = new HashSet<>();
 }

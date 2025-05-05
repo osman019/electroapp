@@ -34,7 +34,7 @@ public class City {
     private String name;
 
     @ManyToOne 
-    @JoinColumn(name = "regions")
+    @JoinColumn(name = "region_id")
     @JsonBackReference
-    Region region;
+    Region regionId;
 }

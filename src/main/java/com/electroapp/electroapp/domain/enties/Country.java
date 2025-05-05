@@ -33,7 +33,7 @@ public class Country {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 80, nullable = false)
+    @Column( name = "name",length = 80, nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "countryId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
