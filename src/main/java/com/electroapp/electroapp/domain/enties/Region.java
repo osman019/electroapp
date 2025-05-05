@@ -36,11 +36,11 @@ public class Region {
 
 
     @ManyToOne
-    @JoinColumn(name = "country_id")
+    @JoinColumn(name = "country")
     @JsonBackReference
     Country countryId;
 
-    @OneToMany(mappedBy =   "regionId", fetch =   FetchType.LAZY, cascade =  CascadeType.ALL)
+    @OneToMany(mappedBy =   "region", fetch =   FetchType.LAZY, cascade =  CascadeType.ALL)
     @JsonBackReference
     private Set<City> cities = new HashSet<>();
 }

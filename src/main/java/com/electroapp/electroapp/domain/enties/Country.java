@@ -20,12 +20,13 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "countries")
+
 @Entity
 @Getter
 @Setter
 @EqualsAndHashCode(exclude =  {"regions"})
 @ToString(exclude =  {"regions"})
+@Table(name = "countries")
 public class Country {
 
     @Id

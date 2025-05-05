@@ -1,6 +1,5 @@
 package com.electroapp.electroapp.infrastruture.controllers;
 
-import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +45,12 @@ public class CountryController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
-        Optional<Country> countryOptional = countryService.dele
+        Optional<Country> countryOptional = countryService.delete(id);
+        if (countryOptional.isPresent()) {
+            return ResponseEntity.ok(countryOptional.orElseThrow());
+
+            
+        }
+        return ResponseEntity.notFound().build();
     }
 }
