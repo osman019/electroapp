@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -21,25 +22,24 @@ import lombok.Setter;
 import lombok.ToString;
 
 
-@Entity
 @Getter
 @Setter
-@EqualsAndHashCode(exclude =  {"regions"})
-@ToString(exclude =  {"regions"})
+@EqualsAndHashCode(exclude = {"regions"})
+@ToString(exclude = {"regions"})
 @Table(name = "countries")
+@Entity
 public class Country {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column( name = "name",length = 80, nullable = false)
+    @Column(length = 50, nullable = false)
     private String name;
-
-    @OneToMany(mappedBy = "countryId", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference
-    private Set<Region> regions = new HashSet<>();
 
     @Embedded
     Audit audit = new Audit();
+
+    @OneToMany(mappedBy = "contryId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Set<Region> regions = new HashSet<>();
 }

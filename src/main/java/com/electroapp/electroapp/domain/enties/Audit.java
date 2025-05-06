@@ -10,37 +10,30 @@ import jakarta.persistence.PreUpdate;
 
 @Embeddable
 public class Audit {
-
-     @Column(name = "created_at")
-    private LocalDateTime created_at;
-
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
     @Column(name = "updated_at")
-    private LocalDateTime updated_at;
+    private LocalDateTime updatedAt;
 
     @PrePersist
-    public void prePersisAudit(){
-        created_at = LocalDateTime.now();
+    public void prePersistAudit() {
+        createdAt = LocalDateTime.now();
     }
-
     @PreUpdate
-    public void preUpdateAudit(){
-        updated_at = LocalDateTime.now();
+    public void preUpdateAudit() {
+        updatedAt = LocalDateTime.now();
     }
-
-    public LocalDateTime getCreated_at() {
-        return created_at;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
-
-    public void setCreated_at(LocalDateTime created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
-
-    public LocalDateTime getUpdated_at() {
-        return updated_at;
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
     }
-
-    public void setUpdated_at(LocalDateTime updated_at) {
-        this.updated_at = updated_at;
-    }
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    } 
     
 }
