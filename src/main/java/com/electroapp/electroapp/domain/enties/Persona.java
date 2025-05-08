@@ -12,8 +12,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "terceros")
-public class Tercero {
+@Table(name = "personas")
+public class Persona {
   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

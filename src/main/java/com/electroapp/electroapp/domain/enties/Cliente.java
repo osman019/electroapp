@@ -13,20 +13,23 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
+
+
 @Getter
+@Setter
+@Table(name = "clientes")
 @Entity
-@Table(name = "proveedores")
-public class Proveedor {
-   @Id
+public class Cliente {
+ @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "diasplazo",length = 30, nullable = false)
-    private String dias;
+    @Column(name = "fechaucompra", length = 30, nullable = false)
+    private int fechaucompra;
 
-    @Column(name = "porcentajeprontopago", length = 30, nullable = false)
-    private int porcentaje;
+    @Column(name = "fechanac",length = 30,nullable = false)
+    private int fechanac;
+
 
     @ManyToOne
     @JoinColumn(name = "persona_id")

@@ -1,11 +1,11 @@
 package com.electroapp.electroapp.domain.enties;
 
-import java.time.LocalDateTime;
+
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,20 +25,27 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 50, nullable = true)
-    private String name;
+    @Column(name="fechacontratacion",length = 30, nullable = false)
+    private int fecha;
 
-    @Column(name = "fecha_contratacion")
-    private LocalDateTime createdAt;
+    @Column(name="salariobase",length = 30, nullable = false)
+    private int salario;
 
-    @Column(name = "salariobase",length = 50, nullable = false)
-    private String employeename;
-    
-    @Embedded
-    Audit audit = new Audit();
+    @Column(name="fechanac",length = 30, nullable = false)
+    private int fechanac;
 
     @ManyToOne
     @JoinColumn(name = "eps_Id")
     @JsonBackReference
     Eps epsId;
+
+    @ManyToOne
+    @JoinColumn(name = "arl_id")
+    @JsonBackReference
+    Arl arlId;
+
+    @ManyToOne
+    @JoinColumn(name = "persona_id")
+    @JsonBackReference
+    Persona personaId;
 }

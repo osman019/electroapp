@@ -13,23 +13,20 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
 @Getter
+@Setter
+@Table(name = "tipos_documentos")
 @Entity
-@Table(name = "proveedores")
-public class Proveedor {
-   @Id
+public class TipoDocumento {
+ @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "diasplazo",length = 30, nullable = false)
-    private String dias;
-
-    @Column(name = "porcentajeprontopago", length = 30, nullable = false)
-    private int porcentaje;
+    @Column(name = "nombre", nullable = false, length = 30)
+    private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "persona_id")
+    @JoinColumn(name = "persona_Id")
     @JsonBackReference
     Persona personaId;
 }
