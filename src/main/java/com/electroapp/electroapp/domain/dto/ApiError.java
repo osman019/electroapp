@@ -4,4 +4,8 @@ import java.io.Serializable;
 
 public class ApiError implements Serializable {
 
+    // private String 
+    // private  String 
+    // private  int 
+    // private  localDatatime
 }
